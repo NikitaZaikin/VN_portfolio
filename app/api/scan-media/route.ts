@@ -1,12 +1,16 @@
 // API route for scanning media folders (server-side only)
+// Note: This route is disabled for static export (GitHub Pages)
+// The client-side code will fallback to using gallery arrays or manual media
 import { NextRequest, NextResponse } from "next/server"
-import { readdir } from "fs/promises"
-import { join } from "path"
 
-const IMAGE_EXTENSIONS = [".jpg", ".jpeg", ".png", ".webp", ".gif", ".svg"]
-const VIDEO_EXTENSIONS = [".mp4", ".webm", ".mov", ".avi", ".mkv"]
+// Disable this route for static export
+export const dynamic = 'force-static'
 
+// For static export, this route returns empty array
+// Client-side code will automatically fallback to gallery arrays or manual media
 export async function GET(request: NextRequest) {
+  // Return empty array for static export - client will use fallback
+  return NextResponse.json({ files: [] })
   const searchParams = request.nextUrl.searchParams
   const folderPath = searchParams.get("folder")
   const fileType = searchParams.get("type") || "both" // "images", "videos", or "both"
