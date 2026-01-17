@@ -124,23 +124,5 @@ npm install
 npm run dev
 ```
 
-Visit `http://localhost:3000`
-
-## Next Steps
-
-1. **Replace Images**: Update all placeholder images with your actual photos/videos
-2. **Update Creator Info**: Edit names, bios, and social links in `lib/data.ts`
-3. **Add Social Links**: Update social media URLs in the footer and creator profiles
-4. **Customize Text**: Update translations and static text for your studio name and messaging
-5. **Add More Projects**: Expand the portfolio by adding more items to `portfolioItems`
-
-## Tips
-
-- **Mobile First**: The design is optimized for mobile, enhanced for desktop
-- **Theme System**: Change colors in one file (`lib/theme.ts`) to update the entire site
-- **Language Switching**: Always works instantly - no page reload needed
-- **Performance**: Uses Next.js Image optimization for fast loading
-
----
 
 Built with v0.app for DVSY Photography & Videography
