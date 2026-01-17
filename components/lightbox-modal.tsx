@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { X, ChevronLeft, ChevronRight, Play } from "lucide-react"
 import Image from "next/image"
 import { theme } from "@/lib/theme"
+import { addBasePath } from "@/lib/utils"
 
 interface LightboxModalProps {
   images: string[]
@@ -152,7 +153,7 @@ export function LightboxModal({
             {isVideo ? (
               <div className="w-full h-full flex items-center justify-center">
                 <video
-                  src={images[currentIndex]}
+                  src={addBasePath(images[currentIndex])}
                   controls
                   autoPlay
                   className="max-w-full max-h-full rounded-lg"
@@ -161,7 +162,7 @@ export function LightboxModal({
               </div>
             ) : (
               <Image
-                src={images[currentIndex] || "/placeholder.svg"}
+                src={addBasePath(images[currentIndex] || "/placeholder.svg")}
                 alt={`Image ${currentIndex + 1}`}
                 fill
                 className="object-contain"
@@ -195,7 +196,7 @@ export function LightboxModal({
                   opacity: idx === currentIndex ? 1 : 0.5,
                 }}
               >
-                <Image src={img || "/placeholder.svg"} alt={`Thumbnail ${idx + 1}`} fill className="object-cover" />
+                <Image src={addBasePath(img || "/placeholder.svg")} alt={`Thumbnail ${idx + 1}`} fill className="object-cover" />
                 {videoIndices.includes(idx) && (
                   <div className="absolute inset-0 flex items-center justify-center bg-black/30">
                     <Play size={16} fill="white" color="white" />

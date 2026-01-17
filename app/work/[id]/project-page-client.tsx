@@ -13,6 +13,7 @@ import Image from "next/image"
 import { LightboxModal } from "@/components/lightbox-modal"
 import { getProjectGalleryClient, getProjectMediaClient } from "@/lib/media-utils"
 import { isVideoFile } from "@/lib/media-helpers"
+import { addBasePath } from "@/lib/utils"
 
 export function ProjectPageClient() {
   const router = useRouter()
@@ -179,7 +180,7 @@ export function ProjectPageClient() {
         >
           {isVideoFile(mainImage) ? (
             <video
-              src={mainImage}
+              src={addBasePath(mainImage)}
               className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               muted
               loop
@@ -188,7 +189,7 @@ export function ProjectPageClient() {
             />
           ) : (
             <Image
-              src={mainImage || project.imageUrl || "/placeholder.svg"}
+              src={addBasePath(mainImage || project.imageUrl || "/placeholder.svg")}
               alt={project.title}
               fill
               className="object-cover group-hover:scale-105 transition-transform duration-500"
@@ -320,7 +321,7 @@ export function ProjectPageClient() {
                   {isVideo ? (
                     <>
                       <video
-                        src={image}
+                        src={addBasePath(image)}
                         className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                         muted
                         loop
@@ -334,7 +335,7 @@ export function ProjectPageClient() {
                     </>
                   ) : (
                     <Image
-                      src={image || "/placeholder.svg"}
+                      src={addBasePath(image || "/placeholder.svg")}
                       alt={`${project.title} - ${index + 1}`}
                       fill
                       className="object-cover group-hover:scale-110 transition-transform duration-500"

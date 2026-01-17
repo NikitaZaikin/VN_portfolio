@@ -8,6 +8,7 @@ import { theme } from "@/lib/theme"
 import { categories, portfolioItems } from "@/lib/data"
 import { useLanguageContext } from "@/contexts/LanguageContext"
 import { translations } from "@/lib/i18n"
+import { addBasePath } from "@/lib/utils"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -275,7 +276,7 @@ export function CategoryCards() {
                   >
                     {/* Background Image */}
                     <Image
-                      src={categoryImage || "/placeholder.svg"}
+                      src={addBasePath(categoryImage || "/placeholder.svg")}
                       alt={card.name}
                       fill
                       className="object-cover group-hover:scale-110 transition-transform duration-500"

@@ -7,6 +7,7 @@ import { theme } from "@/lib/theme"
 import { portfolioItems } from "@/lib/data"
 import { useLanguageContext } from "@/contexts/LanguageContext"
 import { translations } from "@/lib/i18n"
+import { addBasePath } from "@/lib/utils"
 import Image from "next/image"
 
 export function HeroSlider() {
@@ -96,7 +97,7 @@ export function HeroSlider() {
         >
           {isVideo ? (
             <video 
-              src={currentItem.imageUrl} 
+              src={addBasePath(currentItem.imageUrl)} 
               autoPlay 
               muted 
               loop 
@@ -106,7 +107,7 @@ export function HeroSlider() {
             />
           ) : (
             <Image
-              src={currentItem.imageUrl || "/placeholder.svg"}
+              src={addBasePath(currentItem.imageUrl || "/placeholder.svg")}
               alt={currentItem.title}
               fill
               className="object-cover"

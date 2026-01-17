@@ -7,6 +7,7 @@ import { portfolioItems } from "@/lib/data"
 import { theme } from "@/lib/theme"
 import { useLanguageContext } from "@/contexts/LanguageContext"
 import { translations } from "@/lib/i18n"
+import { addBasePath } from "@/lib/utils"
 import { motion } from "framer-motion"
 import Image from "next/image"
 import { Play } from "lucide-react"
@@ -202,7 +203,7 @@ function WorksContent() {
           >
               {item.type === "video" && item.imageUrl.endsWith(".mp4") ? (
                 <video
-                  src={item.imageUrl}
+                  src={addBasePath(item.imageUrl)}
                   className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   muted
                   loop
@@ -210,7 +211,7 @@ function WorksContent() {
                 />
               ) : (
                 <Image
-                  src={item.imageUrl || "/placeholder.svg"}
+                  src={addBasePath(item.imageUrl || "/placeholder.svg")}
                   alt={item.title}
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-500"
