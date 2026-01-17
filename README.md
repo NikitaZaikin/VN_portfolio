@@ -113,6 +113,14 @@ All components use Framer Motion for smooth animations:
 
 ## Deployment
 
+### To GitHub Pages
+1. Убедитесь, что в `next.config.mjs` указан правильный `basePath` (должен совпадать с названием вашего репозитория)
+2. В настройках репозитория GitHub (`Settings` → `Pages`):
+   - Source: выберите `GitHub Actions`
+3. Закоммитьте и запушьте изменения в ветку `main`
+4. GitHub Actions автоматически соберет и задеплоит сайт
+5. Сайт будет доступен по адресу: `https://ваш-username.github.io/VN_portfolio/`
+
 ### To Vercel
 1. Click the "Publish" button in the top right of v0
 2. Connect your GitHub repository
