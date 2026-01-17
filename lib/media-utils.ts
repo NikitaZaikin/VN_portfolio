@@ -42,6 +42,7 @@ export async function getProjectMediaClient(project: Photo): Promise<{
   let videos: MediaItem[] = []
 
   // Handle photos
+  // Priority: manualPhotos > gallery > photosFolder (API scan) > imageUrl fallback
   if (project.manualPhotos && project.manualPhotos.length > 0) {
     // Use manual photos
     photos = project.manualPhotos.sort((a, b) => {
@@ -49,27 +50,29 @@ export async function getProjectMediaClient(project: Photo): Promise<{
       const orderB = b.order ?? 9999
       return orderA - orderB
     })
-  } else if (project.photosFolder) {
-    // Auto-scan photos folder (client-side via API)
-    const scannedPhotos = await scanMediaFolderClient(project.photosFolder, "images")
-    photos = scannedPhotos.map((path, index) => ({
-      path,
-      order: index + 1,
-    }))
   } else if (project.gallery && project.gallery.length > 0) {
-    // Fallback to gallery array
+    // Use gallery array (preferred for static export)
     photos = project.gallery
       .filter((url) => !isVideoFile(url))
       .map((path, index) => ({
         path,
         order: index + 1,
       }))
+  } else if (project.photosFolder) {
+    // Auto-scan photos folder (client-side via API) - only if gallery is empty
+    // Note: This won't work on static export, so gallery should be used instead
+    const scannedPhotos = await scanMediaFolderClient(project.photosFolder, "images")
+    photos = scannedPhotos.map((path, index) => ({
+      path,
+      order: index + 1,
+    }))
   } else {
     // No photos found - use imageUrl as fallback
     photos = project.imageUrl ? [{ path: project.imageUrl, order: 1, isMain: true }] : []
   }
 
   // Handle videos
+  // Priority: manualVideos > gallery > videosFolder (API scan)
   if (project.manualVideos && project.manualVideos.length > 0) {
     // Use manual videos
     videos = project.manualVideos.sort((a, b) => {
@@ -77,21 +80,22 @@ export async function getProjectMediaClient(project: Photo): Promise<{
       const orderB = b.order ?? 9999
       return orderA - orderB
     })
-  } else if (project.videosFolder) {
-    // Auto-scan videos folder (client-side via API)
-    const scannedVideos = await scanMediaFolderClient(project.videosFolder, "videos")
-    videos = scannedVideos.map((path, index) => ({
-      path,
-      order: index + 1,
-    }))
   } else if (project.gallery && project.gallery.length > 0) {
-    // Fallback to gallery array
+    // Use gallery array (preferred for static export)
     videos = project.gallery
       .filter((url) => isVideoFile(url))
       .map((path, index) => ({
         path,
         order: index + 1,
       }))
+  } else if (project.videosFolder) {
+    // Auto-scan videos folder (client-side via API) - only if gallery is empty
+    // Note: This won't work on static export, so gallery should be used instead
+    const scannedVideos = await scanMediaFolderClient(project.videosFolder, "videos")
+    videos = scannedVideos.map((path, index) => ({
+      path,
+      order: index + 1,
+    }))
   }
   // If no videos found, videos array stays empty
 

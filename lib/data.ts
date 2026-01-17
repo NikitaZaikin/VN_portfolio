@@ -77,15 +77,25 @@ export const portfolioItems: Photo[] = [
     location: "Arena Chishinau - Car meet",
     imageUrl: "/head_carmeet.jpg",
     type: "photo",
-    // gallery: [
-    //   "/red-sports-car-luxury-photography.jpg",
-    //   "/car-detail-shot-wheel-and-body.jpg",
-    //   "/sports-car-interior-leather-seats.jpg",
-    //   "/luxury-car-front-view-dramatic-lighting.jpg",
-    //   "/car-photoshoot-sunset-background.jpg",
-    // ],
-    gallery: [], // Optional - will be auto-filled from photosFolder
-    photosFolder: "/projects/2/photos",
+    gallery: [
+      "/projects/2/photos/IMG_2146.jpg",
+      "/projects/2/photos/IMG_2147.jpg",
+      "/projects/2/photos/IMG_2148.jpg",
+      "/projects/2/photos/IMG_2149.jpg",
+      "/projects/2/photos/IMG_2150.jpg",
+      "/projects/2/photos/IMG_2151.jpg",
+      "/projects/2/photos/IMG_2152.jpg",
+      "/projects/2/photos/IMG_2153.jpg",
+      "/projects/2/photos/IMG_2984.jpg",
+      "/projects/2/photos/IMG_3122.jpg",
+      "/projects/2/photos/IMG_3123.jpg",
+      "/projects/2/photos/IMG_3124.jpg",
+      "/projects/2/photos/IMG_3127.jpg",
+      "/projects/2/photos/IMG_3129.jpg",
+      "/projects/2/photos/IMG_3133.jpg",
+      "/projects/2/photos/IMG_3135.jpg",
+    ],
+    // photosFolder: "/projects/2/photos", // Not needed for static export - files are in gallery
     // Example: Manual control with order
     // manualPhotos: [
     //   { path: "/head_carmeet.jpg", order: 1, isMain: true },
@@ -206,8 +216,15 @@ export const portfolioItems: Photo[] = [
     location: "Ukraine",
     imageUrl: "/projects/9/photos/audi_header.jpg",
     type: "video",
-    videosFolder: "/projects/9/videos",
-    photosFolder: "/projects/9/photos",
+    gallery: [
+      "/projects/9/photos/audi_header.jpg",
+      "/projects/9/photos/DSC03144.jpg",
+      "/projects/9/photos/DSC03149.jpg",
+      "/projects/9/photos/DSC03157.jpg",
+      "/projects/9/videos/IMG_2725.MOV",
+    ],
+    // videosFolder: "/projects/9/videos", // Not needed for static export - files are in gallery
+    // photosFolder: "/projects/9/photos", // Not needed for static export - files are in gallery
   }
 ]
 
