@@ -5,6 +5,7 @@ import { creators } from "@/lib/data"
 import { theme } from "@/lib/theme"
 import { useLanguageContext } from "@/contexts/LanguageContext"
 import { translations } from "@/lib/i18n"
+import { addBasePath } from "@/lib/utils"
 import { motion } from "framer-motion"
 import { CheckCircle2, Instagram, Send } from "lucide-react"
 import Image from "next/image"
@@ -96,7 +97,7 @@ export default function AboutPage() {
             style={{ borderColor: theme.colors.neutral.border }}
           >
             <Image
-              src="/creative-studio-workspace.jpg"
+              src={addBasePath("/creative-studio-workspace.jpg")}
               alt="DVSY Studio"
               fill
               className="object-cover group-hover:scale-105 transition-transform duration-500"
@@ -183,7 +184,7 @@ export default function AboutPage() {
                     style={{ borderColor: theme.colors.neutral.border }}
                   >
                     <Image
-                      src={creator.imageUrl || "/placeholder.svg"}
+                      src={addBasePath(creator.imageUrl || "/placeholder.svg")}
                       alt={creator.name}
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-500"

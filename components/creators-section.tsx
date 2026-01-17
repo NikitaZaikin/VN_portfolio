@@ -4,6 +4,7 @@ import { creators } from "@/lib/data"
 import { theme } from "@/lib/theme"
 import { useLanguageContext } from "@/contexts/LanguageContext"
 import { translations } from "@/lib/i18n"
+import { addBasePath } from "@/lib/utils"
 import { Instagram, Send } from "lucide-react"
 import { motion } from "framer-motion"
 import Image from "next/image"
@@ -71,7 +72,7 @@ export function CreatorsSection() {
               {/* Creator Image */}
               <div className="relative h-96 w-full overflow-hidden">
                 <Image
-                  src={creator.imageUrl || "/placeholder.svg"}
+                  src={addBasePath(creator.imageUrl || "/placeholder.svg")}
                   alt={creator.name}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
